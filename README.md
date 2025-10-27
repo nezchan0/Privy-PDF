@@ -84,9 +84,9 @@ This will create a single executable in the `dist/` folder.
 
 ## 🖼️ Preview
 
-| 🖥️ Main Window | ⚙️ Delete Pages Dialog |
-|-----------------|-----------------------|
-| ![Main GUI](assests/main_window.png) | ![Delete Pages Dialog](assests/delete_pages.png) |
+| 🖥️ Main Window | ⚙️ Choose PDFs Dialog | 🗑️ Write Pages To Delete |
+|-----------------|-----------------------|---------------------------|
+| ![Main GUI](assests/main_window.png) | ![Choose PDFs Dialog](assests/Choose_PDFs.png) | ![Delete Pages Dialog](assests/Choose_Page_to_Delete.png) |
 
 
 
