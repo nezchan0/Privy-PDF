@@ -1,4 +1,5 @@
 # 🧩 PrivyPDF
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 **PrivyPDF** is a lightweight, privacy-first desktop PDF editor built using **Python**, **Tkinter**, and **PyPDF**.  
 It allows you to **merge** multiple PDFs or **delete pages** from a PDF — all directly on your local computer, without uploading anything to the cloud.
@@ -104,6 +105,12 @@ This will create a single executable in the `dist/` folder.
 
 Alok Kumar Maurya – Developer | Email: [alok05.maurya@gmail.com](alok05.maurya@gmail.com)
 
+
+---
+
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE) — feel free to use, modify, and distribute it freely, with attribution.
 
 
 
