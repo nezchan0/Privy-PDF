@@ -1,16 +1,12 @@
-name: Build and Release
+name: Build and Release PrivyPDF
 
 on:
   push:
     tags:
       - 'v*'
 
-permissions:
-  contents: write
-  
 jobs:
   build:
-    name: Build for ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -18,10 +14,10 @@ jobs:
           - os: ubuntu-latest
             suffix: linux
           - os: windows-latest
-            suffix: windows
+            suffix: windows.exe
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -32,30 +28,37 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pyinstaller
+          pip install pyinstaller pypdf
 
       - name: Build executable
         run: |
           pyinstaller --onefile --windowed --name "PrivyPDF_${{ matrix.suffix }}" main.py
 
-      - name: Upload artifact
+      - name: Make Linux binary executable
+        if: matrix.os == 'ubuntu-latest'
+        run: chmod +x dist/PrivyPDF_${{ matrix.suffix }}
+
+      - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: privypdf-${{ matrix.suffix }}
-          path: dist/PrivyPDF_${{ matrix.suffix }}*
+          name: PrivyPDF_${{ matrix.suffix }}
+          path: dist/PrivyPDF_${{ matrix.suffix }}
 
   release:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
     steps:
-      - name: Download all build artifacts
+      - name: Download all artifacts
         uses: actions/download-artifact@v4
         with:
-          path: dist
+          path: ./artifacts
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/**/*
+          files: ./artifacts/**/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
