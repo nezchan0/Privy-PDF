@@ -99,11 +99,6 @@ This will create a single executable in the `dist/` folder.
 - Add page reordering  
 - Add drag-and-drop interface  
 
----
-
-## 🧑‍💻 Author
-
-Alok Kumar Maurya – Developer | Email: [alok05.maurya@gmail.com](alok05.maurya@gmail.com)
 
 
 ---
@@ -113,6 +108,11 @@ Alok Kumar Maurya – Developer | Email: [alok05.maurya@gmail.com](alok05.maurya
 This project is licensed under the [MIT License](LICENSE) — feel free to use, modify, and distribute it freely, with attribution.
 
 
+---
+
+## 🧑‍💻 Author
+
+Alok Kumar Maurya – Developer | Email: [alok05.maurya@gmail.com](alok05.maurya@gmail.com)
 
 
 
