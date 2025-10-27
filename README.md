@@ -94,7 +94,7 @@ This will create a single executable in the `dist/` folder.
 
 | 🖥️ Main Window | ⚙️ Delete Pages Dialog |
 |-----------------|-----------------------|
-| ![Main GUI](assets/main_window.png) | ![Delete Pages Dialog](assets/delete_pages.png) |
+| ![Main GUI](assests/main_window.png) | ![Delete Pages Dialog](assests/delete_pages.png) |
 
 
 
