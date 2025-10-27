@@ -1,0 +1,5 @@
+# Core dependencies
+pypdf>=3.9.0
+
+# Optional (only needed for building executable)
+pyinstaller>=6.0
