@@ -43,10 +43,37 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libfuse2 || sudo apt-get install -y libfuse2t64
+          
           wget -O appimagetool https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
           chmod +x appimagetool
+
+          # Prepare AppDir
           mkdir -p AppDir/usr/bin
           cp dist/PrivyPDF_linux AppDir/usr/bin/
+          chmod +x AppDir/usr/bin/PrivyPDF_linux
+
+          # Create .desktop file
+          cat > AppDir/PrivyPDF.desktop <<EOF
+          [Desktop Entry]
+          Name=PrivyPDF
+          Exec=PrivyPDF_linux
+          Icon=PrivyPDF
+          Type=Application
+          Categories=Utility;
+          Comment=Simple PDF tool built with Python.
+          EOF
+
+          # Create AppRun launcher
+          cat > AppDir/AppRun <<EOF
+          #!/bin/bash
+          exec "\$(dirname "\$0")/usr/bin/PrivyPDF_linux" "\$@"
+          EOF
+          chmod +x AppDir/AppRun
+
+          # Optional: Create dummy icon (so AppImage doesn't complain)
+          convert -size 256x256 xc:transparent AppDir/PrivyPDF.png || touch AppDir/PrivyPDF.png
+
+          # Build AppImage
           ./appimagetool AppDir PrivyPDF_linux.AppImage || ./appimagetool --appimage-extract-and-run AppDir PrivyPDF_linux.AppImage
           mv PrivyPDF_linux.AppImage dist/
 
