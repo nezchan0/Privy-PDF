@@ -16,7 +16,15 @@ So I built a **local tool** that keeps everything private and secure on my own c
 ## 🚀 Features
 
 - 🧱 **Merge PDFs:** Combine multiple PDF files into one.  
-- 🗑️ **Delete Pages:** Remove specific pages or ranges with flexible input (like `1,3,5-10,-4,20-` etc).  
+- 🗑️ **Delete Pages:** Remove specific pages or ranges with flexible input (like `
+Install dependencies:
+
+pip install pypdf tkinter
+(Tkinter usually comes preinstalled with Python.)
+
+Run the app:
+
+python main.p1,3,5-10,-4,20-` etc).  
 - 🔒 **Privacy-Focused:** 100% offline. No document ever leaves your device.  
 - 💻 **Cross-Platform:** Works on both **Windows** and **Linux** (tested).  
 
@@ -31,7 +39,25 @@ So I built a **local tool** that keeps everything private and secure on my own c
 
 ---
 
-## ⚙️ Installation (Run from Source)
+
+## 📦 **Download PrivyPDF**
+
+You can download the latest version of **PrivyPDF** for your system from the **[Releases](https://github.com/nezchan0/Privy-PDF/releases)** page.
+
+👉 **[Download Latest Release](https://github.com/nezchan0/Privy-PDF/releases/latest)**
+
+
+### 🖥️ Available Versions:
+| Platform | File Name |
+|-----------|------------|
+| 🪟 **Windows** | `PrivyPDF_windows.exe` |
+| 🐧 **Ubuntu / Linux** | `PrivyPDF_linux` |
+
+
+---
+
+
+## ⚙️ Local Installation (Run from Source)
 
 1. Clone the repository:
    ```bash
@@ -41,9 +67,9 @@ So I built a **local tool** that keeps everything private and secure on my own c
 
 2. Install dependencies:
    ```bash
-   pip install pypdf tkinter
+   pip install -r requirements.txt
    ```
-   *(Tkinter usually comes preinstalled with Python.)*
+   *(Tkinter usually comes preinstalled with Python. If not then install it separately)* 
 
 3. Run the app:
    ```bash
@@ -52,7 +78,7 @@ So I built a **local tool** that keeps everything private and secure on my own c
 
 ---
 
-## 📦 Build Executable (Optional)
+## 📦 Build Executable 
 
 You can package PrivyPDF into a standalone desktop app using **PyInstaller**:
 
@@ -70,7 +96,7 @@ This will create a single executable in the `dist/` folder.
 |-----------------|-----------------------|
 | ![Main GUI](assets/main_window.png) | ![Delete Pages Dialog](assets/delete_pages.png) |
 
-*(Optional: Add screenshots later here.)*
+
 
 ---
 
@@ -85,4 +111,10 @@ This will create a single executable in the `dist/` folder.
 ## 🧑‍💻 Author
 
 Alok Kumar Maurya – Developer | Email: [alok05.maurya@gmail.com](alok05.maurya@gmail.com)
+
+
+
+
+
+
   

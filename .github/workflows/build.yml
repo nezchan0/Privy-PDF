@@ -38,17 +38,40 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: chmod +x dist/PrivyPDF_${{ matrix.suffix }}
 
+      - name: Build Linux AppImage
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y appimagetool
+          mkdir -p PrivyPDF.AppDir/usr/bin
+          cp dist/PrivyPDF_linux PrivyPDF.AppDir/usr/bin/
+          echo "[Desktop Entry]
+          Name=PrivyPDF
+          Exec=PrivyPDF_linux
+          Icon=icon
+          Type=Application
+          Categories=Utility;
+          Comment=Offline PDF organizer - merge and delete pages" > PrivyPDF.AppDir/PrivyPDF.desktop
+          touch PrivyPDF.AppDir/icon.png
+          appimagetool PrivyPDF.AppDir
+          mv PrivyPDF-x86_64.AppImage dist/PrivyPDF_linux.AppImage
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: PrivyPDF_${{ matrix.suffix }}
-          path: dist/PrivyPDF_${{ matrix.suffix }}
+          path: |
+            dist/PrivyPDF_${{ matrix.suffix }}
+            dist/PrivyPDF_linux.AppImage
+          if-no-files-found: ignore
 
   release:
     needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      packages: write
+      id-token: write
 
     steps:
       - name: Download all artifacts

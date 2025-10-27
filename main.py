@@ -138,7 +138,7 @@ def delete_pages():
         return
 
 root = tk.Tk()
-root.title("Local PDF Organizer")
+root.title("Privy-PDF")
 
 tk.Label(root, text="PDF Organizer (Merge, Delete Pages, Custom Output)", font=("Calibri", 14)).pack(pady=10)
 tk.Button(root, text="Merge Multiple PDFs", command=merge_pdfs, width=30).pack(pady=8)
