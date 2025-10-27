@@ -16,15 +16,7 @@ So I built a **local tool** that keeps everything private and secure on my own c
 ## 🚀 Features
 
 - 🧱 **Merge PDFs:** Combine multiple PDF files into one.  
-- 🗑️ **Delete Pages:** Remove specific pages or ranges with flexible input (like `
-Install dependencies:
-
-pip install pypdf tkinter
-(Tkinter usually comes preinstalled with Python.)
-
-Run the app:
-
-python main.p1,3,5-10,-4,20-` etc).  
+- 🗑️ **Delete Pages:** Remove specific pages or ranges with flexible input (like `1,3,5-10,-4,20-` etc).  
 - 🔒 **Privacy-Focused:** 100% offline. No document ever leaves your device.  
 - 💻 **Cross-Platform:** Works on both **Windows** and **Linux** (tested).  
 
