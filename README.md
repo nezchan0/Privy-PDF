@@ -53,7 +53,7 @@ You can download the latest version of **PrivyPDF** for your system from the **[
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/<your-username>/PrivyPDF.git
+   git clone https://github.com/nezchan0/Privy-PDF.git
    cd PrivyPDF
    ```
 

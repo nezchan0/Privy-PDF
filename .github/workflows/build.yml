@@ -42,11 +42,11 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt-get update
-          wget https://github.com/AppImage/AppImageKit/releases/latest/download/appimagetool-x86_64.AppImage
-          chmod +x appimagetool-x86_64.AppImage
+          wget -O appimagetool https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
+          chmod +x appimagetool
           mkdir -p AppDir/usr/bin
           cp dist/PrivyPDF_linux AppDir/usr/bin/
-          ./appimagetool-x86_64.AppImage AppDir PrivyPDF_linux.AppImage
+          ./appimagetool AppDir PrivyPDF_linux.AppImage
           mv PrivyPDF_linux.AppImage dist/
 
       - name: Upload build artifacts
@@ -70,6 +70,20 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: v1.0.7
+          name: "PrivyPDF v1.0.7"
+          body: |
+            🚀 **PrivyPDF v1.0.7 Release**
+
+            Includes:
+            - 🐧 Linux AppImage (portable)
+            - 🪟 Windows executable (.exe)
+
+            👉 Run Linux version using:
+            ```
+            chmod +x PrivyPDF_linux.AppImage
+            ./PrivyPDF_linux.AppImage
+            ```
           files: ./artifacts/**/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
