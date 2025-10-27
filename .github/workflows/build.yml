@@ -42,11 +42,12 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: |
           sudo apt-get update
+          sudo apt-get install -y libfuse2 || sudo apt-get install -y libfuse2t64
           wget -O appimagetool https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage
           chmod +x appimagetool
           mkdir -p AppDir/usr/bin
           cp dist/PrivyPDF_linux AppDir/usr/bin/
-          ./appimagetool AppDir PrivyPDF_linux.AppImage
+          ./appimagetool AppDir PrivyPDF_linux.AppImage || ./appimagetool --appimage-extract-and-run AppDir PrivyPDF_linux.AppImage
           mv PrivyPDF_linux.AppImage dist/
 
       - name: Upload build artifacts
@@ -80,7 +81,7 @@ jobs:
             - 🪟 Windows executable (.exe)
 
             👉 Run Linux version using:
-            ```
+            ```bash
             chmod +x PrivyPDF_linux.AppImage
             ./PrivyPDF_linux.AppImage
             ```
