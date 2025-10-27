@@ -30,15 +30,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install pyinstaller pypdf
 
-      # ✅ Fixed stable AppImageKit version
-      - name: Install appimagetool (Ubuntu only)
-        if: matrix.os == 'ubuntu-latest'
-        run: |
-          sudo apt-get update
-          wget https://github.com/AppImage/AppImageKit/releases/download/13/appimagetool-x86_64.AppImage -O appimagetool
-          chmod +x appimagetool
-          sudo mv appimagetool /usr/local/bin/
-
       - name: Build executable
         run: |
           pyinstaller --onefile --windowed --name "PrivyPDF_${{ matrix.suffix }}" main.py
@@ -47,19 +38,22 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         run: chmod +x dist/PrivyPDF_${{ matrix.suffix }}
 
-      # ✅ Package AppImage
-      - name: Package as AppImage (Ubuntu only)
+      - name: Create AppImage (Linux only)
         if: matrix.os == 'ubuntu-latest'
         run: |
+          sudo apt-get update
+          wget https://github.com/AppImage/AppImageKit/releases/latest/download/appimagetool-x86_64.AppImage
+          chmod +x appimagetool-x86_64.AppImage
           mkdir -p AppDir/usr/bin
           cp dist/PrivyPDF_linux AppDir/usr/bin/
-          appimagetool AppDir dist/PrivyPDF_${{ matrix.suffix }}.AppImage
+          ./appimagetool-x86_64.AppImage AppDir PrivyPDF_linux.AppImage
+          mv PrivyPDF_linux.AppImage dist/
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: PrivyPDF_${{ matrix.suffix }}
-          path: dist/**
+          path: dist/
 
   release:
     needs: build
